@@ -1,5 +1,6 @@
 ﻿using MediaRegister_WPF.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MediaRegister_WPF.ViewModels;
@@ -41,7 +42,7 @@ internal class MainWindowViewModel
         }
         catch
         {
-          //  MessageBox.Show("Invalid input");
+            MessageBox.Show("Invalid input");
         }
         finally
         {
@@ -84,7 +85,7 @@ internal class MainWindowViewModel
         }
         catch
         {
-           // MessageBox.Show("Invalid input");
+            MessageBox.Show("Invalid input");
         }
         finally
         {
@@ -101,11 +102,15 @@ internal class MainWindowViewModel
 
     private bool CanAddBook()
     {
-        return !string.IsNullOrWhiteSpace(BookTitle) && !string.IsNullOrWhiteSpace(BookAuthor) && BookPages > 0;
+        return !string.IsNullOrWhiteSpace(BookTitle) 
+            && !string.IsNullOrWhiteSpace(BookAuthor) 
+            &&  BookPages > 0;
     }
 
     private bool CanAddMovie()
     {
-        return !string.IsNullOrWhiteSpace(MovieTitle) && !string.IsNullOrWhiteSpace(MovieDirector) && MovieLength > 0;
+        return !string.IsNullOrWhiteSpace(MovieTitle) 
+            && !string.IsNullOrWhiteSpace(MovieDirector) 
+            && MovieLength > 0;
     }
 }

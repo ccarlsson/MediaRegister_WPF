@@ -37,11 +37,14 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Titel" />
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding BookTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" 
+                             Text="{Binding BookTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Författare" />
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding BookAuthor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" 
+                             Text="{Binding BookAuthor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal sidor" />
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding BookPages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" 
+                             Text="{Binding BookPages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <Button Grid.Row="5" 
                             Grid.Column="1" 
                             Content="Lägg till bok" 
@@ -64,11 +67,14 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Titel" />
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MovieTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" 
+                             Text="{Binding MovieTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Regisör" />
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding MovieDirector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" 
+                             Text="{Binding MovieDirector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal minuter" />
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding MovieLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" 
+                             Text="{Binding MovieLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Grid.Row="5" 
                             Grid.Column="1"
                             Content="Lägg till film"
