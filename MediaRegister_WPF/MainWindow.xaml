@@ -35,9 +35,9 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Titel" />
                     <TextBox x:Name="tbxBookTitle" Grid.Row="1" Grid.Column="1" />
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Författare" />
-                    <TextBox x:Name="tbxAuthor" Grid.Row="2" Grid.Column="1" />
+                    <TextBox x:Name="tbxBookAuthor" Grid.Row="2" Grid.Column="1" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal sidor" />
-                    <TextBox x:Name="tbxPages" Grid.Row="3" Grid.Column="1"/>
+                    <TextBox x:Name="tbxBookPages" Grid.Row="3" Grid.Column="1"/>
                     <Button Grid.Row="5" 
                             Grid.Column="1" 
                             Content="Lägg till bok" 
@@ -62,9 +62,9 @@
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Titel" />
                     <TextBox x:Name="tbxMoveTitle" Grid.Row="1" Grid.Column="1" />
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Regisör" />
-                    <TextBox x:Name="tbxDirector" Grid.Row="2" Grid.Column="1" />
+                    <TextBox x:Name="tbxMovieDirector" Grid.Row="2" Grid.Column="1" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal minuter" />
-                    <TextBox x:Name="tbxLength" Grid.Row="3" Grid.Column="1"/>
+                    <TextBox x:Name="tbxMovieLength" Grid.Row="3" Grid.Column="1"/>
                     <Button Click="AddMovieClick" Grid.Row="4" Grid.RowSpan="2" Width="120" Height="40" Grid.Column="0" Grid.ColumnSpan="2" Content="Lägg till film" />
                 </Grid>
             </TabItem>
