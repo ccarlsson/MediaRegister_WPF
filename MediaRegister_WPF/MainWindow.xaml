@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaRegister_WPF"
+        xmlns:vm="clr-namespace:MediaRegister_WPF.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
         <ColumnDefinition Width="1*" />
@@ -18,7 +22,7 @@
         
         <!--TabControl-->
         <TabControl Grid.Row="0" Grid.Column="0" Margin="10">
-            <TabItem Header="Lägg till bok" >
+            <TabItem Header="Böcker" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*" />
@@ -33,19 +37,20 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Titel" />
-                    <TextBox x:Name="tbxBookTitle" Grid.Row="1" Grid.Column="1" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding BookTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Författare" />
-                    <TextBox x:Name="tbxBookAuthor" Grid.Row="2" Grid.Column="1" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding BookAuthor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal sidor" />
-                    <TextBox x:Name="tbxBookPages" Grid.Row="3" Grid.Column="1"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding BookPages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <Button Grid.Row="5" 
                             Grid.Column="1" 
                             Content="Lägg till bok" 
-                            Click="AddBookClick" />
+                            Command="{Binding AddBookCommand}"
+                            />
                 </Grid> 
             
             </TabItem>
-            <TabItem Header="Lägg till film" >
+            <TabItem Header="Filmer" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*" />
@@ -60,26 +65,29 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Titel" />
-                    <TextBox x:Name="tbxMoveTitle" Grid.Row="1" Grid.Column="1" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MovieTitle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Regisör" />
-                    <TextBox x:Name="tbxMovieDirector" Grid.Row="2" Grid.Column="1" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding MovieDirector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal minuter" />
-                    <TextBox x:Name="tbxMovieLength" Grid.Row="3" Grid.Column="1"/>
-                    <Button Click="AddMovieClick" Grid.Row="4" Grid.RowSpan="2" Width="120" Height="40" Grid.Column="0" Grid.ColumnSpan="2" Content="Lägg till film" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding MovieLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Grid.Row="5" 
+                            Grid.Column="1"
+                            Content="Lägg till film"
+                            Command="{Binding AddMovieCommand}"/>
                 </Grid>
             </TabItem>
         </TabControl>
         
         <!--Listbox-->
-        <ListBox x:Name="listbox" Grid.Row="0" Grid.Column="1" Margin="10 32 10 10">
+        <ListBox Grid.Row="0" Grid.Column="1" Margin="10 32 10 10" ItemsSource="{Binding MediaList, Mode=TwoWay}">
 
         </ListBox>
         <!--Groupbox-->
         <GroupBox Header="Visa" Grid.Row="1" Grid.Column="1" Margin="10" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <RadioButton x:Name="rbAll" Checked="RadioButtonChecked"  Content="Alla" Margin="20"/>
-                <RadioButton x:Name="rbBooks" Checked="RadioButtonChecked" Content="Böcker" Margin="20"/>
-                <RadioButton x:Name="rbMovies" Checked="RadioButtonChecked" Content="Filmer" Margin="20"/>
+                <RadioButton IsChecked="{Binding IsAllChecked}" Command="{Binding UpdateRadioButtonsCommand}" Content="Alla" Margin="20"/>
+                <RadioButton IsChecked="{Binding IsBooksChecked}" Command="{Binding UpdateRadioButtonsCommand}" Content="Böcker" Margin="20"/>
+                <RadioButton IsChecked="{Binding IsMoviesChecked}" Command="{Binding UpdateRadioButtonsCommand}"  Content="Filmer" Margin="20"/>
             </StackPanel>
         </GroupBox>
     </Grid>
