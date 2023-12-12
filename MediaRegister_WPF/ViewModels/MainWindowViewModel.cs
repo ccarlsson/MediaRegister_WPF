@@ -7,7 +7,7 @@ namespace MediaRegister_WPF.ViewModels;
 internal class MainWindowViewModel
 {
     // A list to store all media objects
-    private readonly List<Media> _mediaRegister = new();
+    private readonly List<Media> _mediaRegister = [];
 
     // Constructor initializes all commands
     public MainWindowViewModel()
@@ -36,7 +36,7 @@ internal class MainWindowViewModel
     public bool IsMoviesChecked { get; set; } = false;
 
     // Observable collection for the media list
-    public ObservableCollection<Media> MediaList { get; set; } = new();
+    public ObservableCollection<Media> MediaList { get; set; } = [];
 
     // Method to add a book to the media register
     private void AddBook()
