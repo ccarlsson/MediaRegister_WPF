@@ -41,12 +41,11 @@
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Författare" />
                     <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding BookAuthor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBlock Grid.Row="3" Grid.Column="0" Text="Antal sidor" />
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding BookPages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding BookPages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <Button Grid.Row="5" 
                             Grid.Column="1" 
                             Content="Lägg till bok" 
-                            Command="{Binding AddBookCommand}"
-                            />
+                            Command="{Binding AddBookCommand}" />
                 </Grid> 
             
             </TabItem>

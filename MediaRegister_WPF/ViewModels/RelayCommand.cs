@@ -3,18 +3,16 @@ using System.Windows.Input;
 
 namespace MediaRegister_WPF.ViewModels;
 
-internal class RelayCommand : ICommand
+internal class RelayCommand(Action action, Func<bool> canExecute = null!) : ICommand
 {
-    private Action _action;
-    private readonly Func<bool> _canExecute;
+    private Action _action = action;
+    private readonly Func<bool> _canExecute = canExecute;
 
-    public RelayCommand(Action action, Func<bool> canExecute = null!)
+    public event EventHandler? CanExecuteChanged
     {
-        _action = action;
-        _canExecute = canExecute;
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
     }
-
-    public event EventHandler? CanExecuteChanged;
 
     public bool CanExecute(object? parameter)
     {
@@ -22,7 +20,7 @@ internal class RelayCommand : ICommand
         {
             return true;
         }
-        return true;// _canExecute();
+        return _canExecute();
     }
 
     public void Execute(object? parameter)
