@@ -19,4 +19,19 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void AddBookClick(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void AddMovieClick(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void RadioButtonChecked(object sender, RoutedEventArgs e)
+    {
+
+    }
 }
