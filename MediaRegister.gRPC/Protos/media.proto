@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+option csharp_namespace = "MediaRegister.gRPC";
+
+package media;
+
+service Media {
+	rpc GetBook (GetBookRequest) returns (GetBookResponse); 
+	rpc GetBooks (GetBooksRequest) returns (GetBooksResponse);
+	rpc SaveBook (SaveBookRequest) returns (SaveBookResponse);
+
+	rpc GetMovie (GetMovieRequest) returns (GetMovieResponse);
+    rpc GetMovies (GetMoviesRequest) returns (GetMoviesResponse);
+	rpc SaveMovie (SaveMovieRequest) returns (SaveMovieResponse);
+}
+
+message GetBookRequest {
+	int32 id		= 1;
+}
+
+message GetBookResponse {
+	int32 id		= 1;
+	string title	= 2;
+	string author	= 3;
+	int32 pages		= 4;
+}
+
+message	GetBooksRequest { 
+}
+
+message GetBooksResponse {
+	repeated GetBookResponse books = 1;
+}
+
+
+message SaveBookRequest {
+	string title	= 1;
+	string author	= 2;
+	int32 pages		= 3;
+}
+
+message SaveBookResponse {
+	int32 id = 1;
+}
+
+message GetMovieRequest {
+	int32 id = 1;
+}
+
+message GetMovieResponse {
+	int32 id			= 1;
+	string title		= 2;
+	string director		= 3;
+	int32 length		= 4;
+}
+
+message GetMoviesRequest { 
+}
+
+message GetMoviesResponse {
+	repeated GetMovieResponse movies = 1;
+}
+
+
+message SaveMovieRequest {
+	string title	= 1;
+	string director	= 2;
+	int32 length	= 3;
+}
+
+message SaveMovieResponse {
+	int32 id = 1;
+}

@@ -1,0 +1,1 @@
+﻿namespace MediaRegister.gRPC.Models;
