@@ -1,6 +1,5 @@
 ﻿using MediaRegister_WPF.Models;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace MediaRegister_WPF.ViewModels;
@@ -41,50 +40,32 @@ internal class MainWindowViewModel
     // Method to add a book to the media register
     private void AddBook()
     {
-        try
-        {
-            string title = BookTitle;
-            string author = BookAuthor;
-            int pages = BookPages;
-            Book book = new(title, author, pages);
-            _mediaRegister.Add(book);
-            UpdateListBox();
-        }
-        catch
-        {
-            MessageBox.Show("Invalid input");
-        }
-        finally
-        {
-            BookTitle = "";
-            BookAuthor = "";
-            BookPages = 0;
-        }
+
+        string title = BookTitle;
+        string author = BookAuthor;
+        int pages = BookPages;
+        Book book = new(title, author, pages);
+        _mediaRegister.Add(book);
+        UpdateListBox();
+        BookTitle = "";
+        BookAuthor = "";
+        BookPages = 0;
+
     }
 
 
     // Method to add a movie to the media register
     private void AddMovie()
     {
-        try
-        {
-            string title = MovieTitle;
-            string director = MovieDirector;
-            int length = MovieLength;
-            Movie movie = new(title, director, length);
-            _mediaRegister.Add(movie);
-            UpdateListBox();
-        }
-        catch
-        {
-            MessageBox.Show("Invalid input");
-        }
-        finally
-        {
-            MovieTitle = "";
-            MovieDirector = "";
-            MovieLength = 0;
-        }
+        string title = MovieTitle;
+        string director = MovieDirector;
+        int length = MovieLength;
+        Movie movie = new(title, director, length);
+        _mediaRegister.Add(movie);
+        UpdateListBox();
+        MovieTitle = "";
+        MovieDirector = "";
+        MovieLength = 0;
     }
 
 
