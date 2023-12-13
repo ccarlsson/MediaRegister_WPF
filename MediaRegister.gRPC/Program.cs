@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc(); 
 builder.Services.AddDbContext<AppDbContext>(options 
-    => options.UseSqlite("Data Source=media.db"));
+    => options.UseSqlite("Data Source=./db/media.db"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
