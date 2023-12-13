@@ -364,3 +364,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MediaRegister.gRPC/media.db
+/MediaRegister.gRPC/media.db-shm
+/MediaRegister.gRPC/media.db-wal
