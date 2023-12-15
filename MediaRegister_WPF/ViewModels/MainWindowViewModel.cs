@@ -1,12 +1,15 @@
 ﻿using MediaRegister_WPF.Models;
+using MediaRegister_WPF.Services;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MediaRegister_WPF.ViewModels;
 internal class MainWindowViewModel
 {
     // A list to store all media objects
-    private readonly List<Media> _mediaRegister = [];
+    // private readonly List<Media> _mediaRegister = [];
+    private readonly MediaService _mediaService = new();
 
     // Constructor initializes all commands
     public MainWindowViewModel()
@@ -14,7 +17,11 @@ internal class MainWindowViewModel
         AddBookCommand = new RelayCommand(AddBook, CanAddBook);
         AddMovieCommand = new RelayCommand(AddMovie, CanAddMovie);
         UpdateRadioButtonsCommand = new RelayCommand(UpdateRadioButtons);
+
+        UpdateListBox();
     }
+
+    
 
     // Commands for adding a book, adding a movie, and updating radio buttons
     public ICommand AddBookCommand { get; }
@@ -35,45 +42,60 @@ internal class MainWindowViewModel
     public bool IsMoviesChecked { get; set; } = false;
 
     // Observable collection for the media list
-    public ObservableCollection<Media> MediaList { get; set; } = [];
+    public ObservableCollection<Models.Media> MediaList { get; set; } = [];
 
     // Method to add a book to the media register
-    private void AddBook()
+    private async void AddBook()
     {
 
         string title = BookTitle;
         string author = BookAuthor;
         int pages = BookPages;
-        Book book = new(title, author, pages);
-        _mediaRegister.Add(book);
-        UpdateListBox();
-        BookTitle = "";
-        BookAuthor = "";
-        BookPages = 0;
+        Book book = new(0, title, author, pages);
+        var newId = await _mediaService.AddBook(book);
+        if(newId >= 0)
+        {
+            UpdateListBox();
+            BookTitle = "";
+            BookAuthor = "";
+            BookPages = 0;
+        }
+        else
+        {
+            MessageBox.Show("Error adding book");
+        }
 
     }
 
 
     // Method to add a movie to the media register
-    private void AddMovie()
+    private async void AddMovie()
     {
         string title = MovieTitle;
         string director = MovieDirector;
         int length = MovieLength;
-        Movie movie = new(title, director, length);
-        _mediaRegister.Add(movie);
-        UpdateListBox();
-        MovieTitle = "";
-        MovieDirector = "";
-        MovieLength = 0;
+        Movie movie = new(0, title, director, length);
+        var newId = await _mediaService.AddMovie(movie);
+        if(newId >= 0)
+        {
+            UpdateListBox();
+            MovieTitle = "";
+            MovieDirector = "";
+            MovieLength = 0;
+        }
+        else
+        {
+            MessageBox.Show("Error adding movie");
+        } 
     }
 
 
     // Method to update the media list based on the selected radio button
-    private void UpdateListBox()
+    private async void UpdateListBox()
     {
         MediaList.Clear();
-        foreach (Media media in _mediaRegister)
+        var mediaList = await _mediaService.GetAllMedia();
+        foreach (Models.Media media in mediaList)
         {
             if (IsAllChecked)
             {

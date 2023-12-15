@@ -1,11 +1,9 @@
 ﻿namespace MediaRegister_WPF.Models;
-internal class Movie(string title, string director, int length) : Media(title)
+internal record Movie(int Id, string Title, string Director, int Length) : Media(Id, Title)
 {
-    private string _director = director;
-    private int _length = length;
-
+    
     override public string ToString()
     {
-        return $"{Title} by {_director}, {_length} minutes";
+        return $"{Title} by {Director}, {Length} minutes";
     }
 }
