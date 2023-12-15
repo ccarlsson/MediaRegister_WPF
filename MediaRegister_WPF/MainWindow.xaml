@@ -84,9 +84,12 @@
         </TabControl>
         
         <!--Listbox-->
-        <ListBox Grid.Row="0" Grid.Column="1" Margin="10 32 10 10" ItemsSource="{Binding MediaList, Mode=TwoWay}">
+        <ListBox Grid.Row="0" Grid.Column="1" Margin="10 32 10 10" ItemsSource="{Binding MediaList, Mode=TwoWay}" SelectedItem="{Binding SelectedMedia}">
 
         </ListBox>
+
+        <Button Grid.Column="0" Grid.Row="1" Content="Delete" Width="200" Height="50" Command="{Binding DeleteCommand}" />
+
         <!--Groupbox-->
         <GroupBox Header="Visa" Grid.Row="1" Grid.Column="1" Margin="10" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">

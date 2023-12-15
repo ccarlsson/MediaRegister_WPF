@@ -74,4 +74,16 @@ internal class MediaService
 
         return response.Id;
     }
+
+    internal void DeleteBook(int id)
+    {
+        var request = new DeleteBookRequest { Id = id };
+        _client.DeleteBook(request); 
+    }
+
+    internal void DeleteMovie(int id)
+    {
+        var request = new DeleteMovieRequest { Id = id };
+        _client.DeleteMovie(request);
+    }
 }
