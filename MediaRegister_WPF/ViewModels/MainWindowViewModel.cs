@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace MediaRegister_WPF.ViewModels;
-internal class MainWindowViewModel
+internal class MainWindowViewModel : BaseViewModel
 {
     // A list to store all media objects
     private readonly List<Media> _mediaRegister = [];
@@ -22,12 +22,53 @@ internal class MainWindowViewModel
     public ICommand UpdateRadioButtonsCommand { get; }
 
     // Properties for book and movie details
-    public string BookTitle { get; set; } = "";
-    public string BookAuthor { get; set; } = "";
-    public int BookPages { get; set; }
-    public string MovieTitle { get; set; } = "";
-    public string MovieDirector { get; set; } = "";
-    public int MovieLength { get; set; }
+    private string _bookTitle = "";
+    private string _bookAuthor = "";
+    private int _bookPages = 0;
+    public string BookTitle {
+        get
+        {
+            return _bookTitle;
+        } 
+        set
+        {
+            SetProperty(ref _bookTitle, value, nameof(BookTitle));
+        }
+    }
+    public string BookAuthor
+    {
+        get
+        {
+            return _bookAuthor;
+        }
+        set
+        {
+            SetProperty(ref _bookAuthor, value, nameof(BookAuthor));
+        }
+    }
+    public int BookPages
+    {
+        get
+        {
+            return _bookPages;
+        }
+        set
+        {
+            SetProperty(ref _bookPages, value, nameof(BookPages));
+        }
+    }
+
+
+    private string _movieTitle = "";
+    private string _movieDirector = "";
+    private int _movieLength = 0;
+    public string MovieTitle
+    {
+        get { return _movieTitle; }
+        set { SetProperty(ref _movieTitle, value, nameof(MovieTitle)); }
+    }
+    public string MovieDirector { get { return _movieDirector; } set { SetProperty(ref _movieDirector, value, nameof(MovieDirector)); } }
+    public int MovieLength { get { return _movieLength; } set { SetProperty(ref _movieLength, value, nameof(MovieLength)); } }
 
     // Properties for radio button states
     public bool IsAllChecked { get; set; } = true;
