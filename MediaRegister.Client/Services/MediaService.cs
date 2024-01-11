@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Grpc.Net.Client;
-using MediaRegister_WPF.Extensions;
-using MediaRegister_WPF.Models;
+using MediaRegister.Client.Extensions;
+using MediaRegister.Client.Models;
 
-namespace MediaRegister_WPF.Services;
-internal class MediaService
+namespace MediaRegister.Client.Services;
+public class MediaService
 {
 
     Media.MediaClient _client;
@@ -56,7 +51,7 @@ internal class MediaService
             media.Add(movie.ToMovie());
         }
 
-        return media; 
+        return media;
     }
 
     public async Task<int> AddBook(Book book)
@@ -66,7 +61,7 @@ internal class MediaService
 
         return response.Id;
     }
-    
+
     public async Task<int> AddMovie(Movie movie)
     {
         var request = movie.ToPostMovieRequest();
@@ -75,13 +70,13 @@ internal class MediaService
         return response.Id;
     }
 
-    internal void DeleteBook(int id)
+    public void DeleteBook(int id)
     {
         var request = new DeleteBookRequest { Id = id };
-        _client.DeleteBook(request); 
+        _client.DeleteBook(request);
     }
 
-    internal void DeleteMovie(int id)
+    public void DeleteMovie(int id)
     {
         var request = new DeleteMovieRequest { Id = id };
         _client.DeleteMovie(request);

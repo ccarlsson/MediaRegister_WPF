@@ -1,7 +1,7 @@
-﻿using MediaRegister_WPF.Services;
-using MediaRegister_WPF.Models;
+﻿using MediaRegister.Client.Services;
+using MediaRegister.Client.Models;
 
-namespace MediaRegister_WPF.Extensions;
+namespace MediaRegister.Client.Extensions;
 internal static class MediaExtensions
 {
     public static Book ToBook(this GetBookResponse response)

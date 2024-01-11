@@ -1,4 +1,4 @@
-﻿using MediaRegister_WPF.Models;
+﻿
 using System.Windows;
 
 namespace MediaRegister_WPF;

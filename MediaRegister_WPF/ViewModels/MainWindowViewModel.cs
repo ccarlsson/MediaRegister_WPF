@@ -1,8 +1,8 @@
-﻿using MediaRegister_WPF.Models;
-using MediaRegister_WPF.Services;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using MediaRegister.Client.Models;
+using MediaRegister.Client.Services;
 
 namespace MediaRegister_WPF.ViewModels;
 internal class MainWindowViewModel
@@ -54,7 +54,7 @@ internal class MainWindowViewModel
     public string MovieDirector { get; set; } = "";
     public int MovieLength { get; set; }
 
-    public Models.Media? SelectedMedia { get; set; }
+    public MediaRegister.Client.Models.Media? SelectedMedia { get; set; }
 
     // Properties for radio button states
     public bool IsAllChecked { get; set; } = true;
@@ -62,7 +62,7 @@ internal class MainWindowViewModel
     public bool IsMoviesChecked { get; set; } = false;
 
     // Observable collection for the media list
-    public ObservableCollection<Models.Media> MediaList { get; set; } = [];
+    public ObservableCollection<MediaRegister.Client.Models.Media> MediaList { get; set; } = [];
 
     // Method to add a book to the media register
     private async void AddBook()
@@ -115,7 +115,7 @@ internal class MainWindowViewModel
     {
         MediaList.Clear();
         var mediaList = await _mediaService.GetAllMedia();
-        foreach (Models.Media media in mediaList)
+        foreach (MediaRegister.Client.Models.Media media in mediaList)
         {
             if (IsAllChecked)
             {
